@@ -54,7 +54,7 @@ start:
 			if (a[i] > max_v) max_v = a[i];
 			if (a[i] < min_v) min_v = a[i];
 		}
-		cout << "максимальное значение: "<< max_v << endl << "минимальное значение: "<< min_v << endl;
+		cout << "максимальное значение: " << max_v << endl << "минимальное значение: " << min_v << endl << endl;
 		
 	}
 	break;
@@ -73,23 +73,21 @@ start:
 			else flag = false;
 			if (i > n / 2+1) break;
 		}
-		if (flag) cout << "symmetric" << endl;
-		else cout << "non-symmetic" << endl;
-
-
+		if (flag) cout << "symmetric" << endl << endl;
+		else cout << "non-symmetic" << endl << endl;
 	}
 	break;
-	case 4: //проверка на симметричность массива - оптимальное решение
+	case 4: //проверка на симметричность массива - оптимальное решениe
 	{
-		const int n = 10;
+		const int n = 5;
 		/*int a[n] = {1, 2, 3, 4, 5, 5, 4, 7, 2, 1};*/
 
 		int a[n];
 		cin >> a[n];
-		
+
 		bool f = true;
 
-		for (int i = 0; i < n/2; i++)
+		for (int i = 0; i < n / 2; i++)
 		{
 			if (a[i] != a[n - 1 - i])
 			{
@@ -97,22 +95,22 @@ start:
 				break;
 			}
 		}
-		if(f) cout << "symmetric" << endl;
-		else cout << "non-symmetic" << endl;
+		if (f) cout << "symmetric" << endl << endl;
+		else cout << "non-symmetic" << endl << endl;
 	}
 	break;
 	case 5:
 	{
 		const int n = 10;
 		int a[n] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-		
+
 		int b = 0;
 
-		for (int i = 0; i < n/2; i++) // данный цикл для "отражения" значений элементов. 
+		for (int i = 0; i < n / 2; i++) // данный цикл для "отражения" значений элементов. 
 		{                             // выполнять только до половины массива n/2, иначе просто придет к изначальным значениям если будет все до конца отражать
-			/*b = a[i];
-			a[i] = a[n - 1 - i];
-			a[n - 1 - i] = b;*/
+									  /*b = a[i];
+									  a[i] = a[n - 1 - i];
+									  a[n - 1 - i] = b;*/
 
 			swap(a[i], a[n - 1 - i]); // более оптимальная замена, без третьей переменной
 		}
@@ -121,9 +119,7 @@ start:
 		{
 			cout << a[j] << "\t";
 		}
-
-		cout << endl;
-		
+		cout << endl << endl;
 	}
 	break;
 	case 6: // В одномерном массиве, заполненном случайными числами, определить минимальный и максимальный элементы
@@ -141,48 +137,61 @@ start:
 			if (a[i] > max_v) max_v = a[i];
 			if (a[i] < min_v) min_v = a[i];
 		}
-		cout << "максимальное значение: " << max_v << endl << "минимальное значение: " << min_v << endl;
+		cout << "максимальное значение: " << max_v << endl << "минимальное значение: " << min_v << endl << endl;
 	}
 	break;
 	case 7: // первое и последнее элементы массивов не трогать, а остальные заменить на полусумму соседей с двух сторон
 	{
-		const int n = 10;
-		double a[n] = { 0, 5, 8, 16, 15, 18, 13, 7, 3, 18 };
+		const int n = 5;
+		double a[n] = { 1, 2, 4, 8, 10 };
+
+		int temp = 0;
+		int temp1 = 0;
 
 		for (int i = 0; i < n; i++)
 		{
-			if (i == 0 || i == n - 1) continue;
-			else a[i] = (a[i + 1] + a[i - 1]) / 2.0;
+			if (i == 0 || i == n - 1) cout << a[i] << " ";
+			else
+			{
+				if (i == 1)
+				{
+					temp = a[i];
+					a[i] = (a[i - 1] + a[i + 1]) / 2.0;
+				}
+				else
+				{
+					temp1 = (temp + a[i + 1]) / 2.0;
+					temp = a[1];
+					a[1] = temp1;
+				}
+				cout << a[i] << " ";
+			}
+		}
+		cout << endl << endl;
 
+		for (int i = 0; i < n; i++)
+		{
 			cout << a[i] << " ";
 		}
-		cout << endl;
+		cout << endl << endl;
 
+		//double b = 0;
+		//for (int i = 0; i < n; i++)
+		//{
+		//	if (i != 0 && i != n - 1)
+		//	{
+		//		b = (a[i - 1] + a[i + 1]) / 2.0;  // но здесь не происходит замены элементов массива, а просто вычисление и распечатка b
+		//		cout << b << " ";
+		//	}
+		//	else cout << a[i] << " ";
+		//}
+		//cout << endl << endl;
 
-
-		/*for (int i = 0; i < n; i++) 
-		{                        
-			if (i != 0 && i != n - 1) {
-				b = (a[i + 1] + a[i - 1]) / 2.0;
-				cout << b << " ";
-			}
-			else cout << a[i] << " ";*/
-
-	}
-	break;
-	case 8:
-	{
-
-	}
-	break;
-	case 9:
-	{
-
-	}
-	break;
-	case 10:
-	{
-
+		//for (int i = 0; i < n; i++) // проверочная распечатка - значения элементов остались изначальными
+		//{
+		//	cout << a[i] << " ";
+		//}
+		//cout << endl << endl;
 	}
 	break;
 	default:
