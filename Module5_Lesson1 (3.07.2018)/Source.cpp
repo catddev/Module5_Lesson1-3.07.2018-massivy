@@ -82,7 +82,11 @@ start:
 	case 4: //проверка на симметричность массива - оптимальное решение
 	{
 		const int n = 10;
-		int a[n] = {1, 2, 3, 4, 5, 5, 4, 7, 2, 1};
+		/*int a[n] = {1, 2, 3, 4, 5, 5, 4, 7, 2, 1};*/
+
+		int a[n];
+		cin >> a[n];
+		
 		bool f = true;
 
 		for (int i = 0; i < n/2; i++)
@@ -95,7 +99,6 @@ start:
 		}
 		if(f) cout << "symmetric" << endl;
 		else cout << "non-symmetic" << endl;
-	
 	}
 	break;
 	case 5:
@@ -123,13 +126,47 @@ start:
 		
 	}
 	break;
-	case 6:
+	case 6: // В одномерном массиве, заполненном случайными числами, определить минимальный и максимальный элементы
 	{
+		const int n = 5;
+		int a[n];
 
+		int max_v = INT_MIN;
+		int min_v = INT_MAX;
+
+		for (int i = 0; i < 5; i++)
+		{
+			a[i] = -100 + rand() % 200;
+			cout << a[i] << endl;
+			if (a[i] > max_v) max_v = a[i];
+			if (a[i] < min_v) min_v = a[i];
+		}
+		cout << "максимальное значение: " << max_v << endl << "минимальное значение: " << min_v << endl;
 	}
 	break;
-	case 7:
+	case 7: // первое и последнее элементы массивов не трогать, а остальные заменить на полусумму соседей с двух сторон
 	{
+		const int n = 10;
+		double a[n] = { 0, 5, 8, 16, 15, 18, 13, 7, 3, 18 };
+
+		for (int i = 0; i < n; i++)
+		{
+			if (i == 0 || i == n - 1) continue;
+			else a[i] = (a[i + 1] + a[i - 1]) / 2.0;
+
+			cout << a[i] << " ";
+		}
+		cout << endl;
+
+
+
+		/*for (int i = 0; i < n; i++) 
+		{                        
+			if (i != 0 && i != n - 1) {
+				b = (a[i + 1] + a[i - 1]) / 2.0;
+				cout << b << " ";
+			}
+			else cout << a[i] << " ";*/
 
 	}
 	break;
