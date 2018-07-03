@@ -27,7 +27,7 @@ start:
 	case 1:
 	{
 		/*int a[10];
-		
+
 		const int n = 10;
 		int a[] = { 12, 30, 9 };
 
@@ -55,7 +55,7 @@ start:
 			if (a[i] < min_v) min_v = a[i];
 		}
 		cout << "максимальное значение: " << max_v << endl << "минимальное значение: " << min_v << endl << endl;
-		
+
 	}
 	break;
 	case 3: // проверка симметричности
@@ -71,34 +71,13 @@ start:
 
 			if (a[i] == a[n - i - 1]) flag = true;
 			else flag = false;
-			if (i > n / 2+1) break;
+			if (i > n / 2 + 1) break;
 		}
 		if (flag) cout << "symmetric" << endl << endl;
 		else cout << "non-symmetic" << endl << endl;
 	}
 	break;
-	case 4: //проверка на симметричность массива - оптимальное решениe
-	{
-		const int n = 5;
-		/*int a[n] = {1, 2, 3, 4, 5, 5, 4, 7, 2, 1};*/
-
-		int a[n];
-		cin >> a[n];
-
-		bool f = true;
-
-		for (int i = 0; i < n / 2; i++)
-		{
-			if (a[i] != a[n - 1 - i])
-			{
-				f = false;
-				break;
-			}
-		}
-		if (f) cout << "symmetric" << endl << endl;
-		else cout << "non-symmetic" << endl << endl;
-	}
-	break;
+	
 	case 5:
 	{
 		const int n = 10;
@@ -145,35 +124,9 @@ start:
 		const int n = 5;
 		double a[n] = { 1, 2, 4, 8, 10 };
 
-		double temp;
-		double other;
+		// 2) работает, но пришлось вводить второй массив
 
-		for (int i = 0; i < n; i++)
-		{
-			if (i == 0 || i == n - 1) cout << a[i] << " ";
-			else
-			{
-				temp = a[i];
-				if (i == 1) other = temp;
-				a[i] = (other + a[i + 1]) / 2.0;
-				if (i!=1) temp = other;
-
-				cout << a[i] << " ";
-			}
-		}
-		cout << endl << endl;
-
-
-		for (int i = 0; i < n; i++)
-		{
-			cout << a[i] << " ";
-		}
-		cout << endl << endl;
-
-
-	// 2) работает, но пришлось вводить второй массив
-
-	/*	double temp[n];
+		double temp[n];
 
 		for (int i = 0; i < n; i++)
 		{
@@ -193,30 +146,85 @@ start:
 		{
 			cout << a[i] << " ";
 		}
-		cout << endl << endl;*/
+		cout << endl << endl;
 
 
-	// 3) но здесь не происходит замены элементов массива, а просто вычисление и распечатка b, так что некорректно
 
-		//double b = 0;
-		//for (int i = 0; i < n; i++)
-		//{
-		//	if (i != 0 && i != n - 1)
-		//	{
-		//		b = (a[i - 1] + a[i + 1]) / 2.0;
-		//		cout << b << " ";
-		//	}
-		//	else cout << a[i] << " ";
-		//}
-		//cout << endl << endl;
 
-		//for (int i = 0; i < n; i++) // проверочная распечатка - значения элементов остались изначальными
-		//{
-		//	cout << a[i] << " ";
-		//}
-		//cout << endl << endl;
+		//////double temp = 0;
+		//////double temp1, temp2;
+
+		//////for (int i = 0; i <n; i++)
+		//////{
+		//////
+		//////	if (i == 0 || i == n - 1) cout << a[i] << " ";
+
+		//////	else
+		//////	{
+		//////		temp = (a[i-1] + a[i + 1]) / 2.0;
+		//////		cout << temp << " ";
+		//////		/*if (i==1) temp1 = temp;
+		//////		else if (i==2) temp2 = temp;*/
+		//////	}
+
+		//////	if (i > 2) a[i - 2] = (a[i - 3] + a[i - 1]) / 2.0;
+		//////	 
+		//////}
+
+		///////*a[1] = temp1;
+		//////a[2] = temp2;*/
+		//////cout << endl << endl;
+
+		//////for (int j = 0; j < n; j++)
+		//////{
+		//////	cout << a[j] << " ";
+		//////}
+		//////cout << endl << endl;
+
+
+			// 3) но здесь не происходит замены элементов массива, а просто вычисление и распечатка b, так что некорректно
+
+				//double b = 0;
+				//for (int i = 0; i < n; i++)
+				//{
+				//	if (i != 0 && i != n - 1)
+				//	{
+				//		b = (a[i - 1] + a[i + 1]) / 2.0;
+				//		cout << b << " ";
+				//	}
+				//	else cout << a[i] << " ";
+				//}
+				//cout << endl << endl;
+
+				//for (int i = 0; i < n; i++) // проверочная распечатка - значения элементов остались изначальными
+				//{
+				//	cout << a[i] << " ";
+				//}
+				//cout << endl << endl;
 	}
 	break;
+	case 4: //проверка на симметричность массива - оптимальное решениe
+	{
+		const int x = 5;
+		
+		int a[x];
+		cin >> a[x];
+
+		bool f = true;
+
+		for (int i = 0; i < x / 2; i++)
+		{
+			if (a[i] != a[x - 1 - i])
+			{
+				f = false;
+				break;
+			}
+		}
+		if (f) cout << "symmetric" << endl << endl;
+		else cout << "non-symmetic" << endl << endl;
+	}
+	break;
+
 	default:
 		cout << "нет такой задачи" << endl << endl;
 	}
