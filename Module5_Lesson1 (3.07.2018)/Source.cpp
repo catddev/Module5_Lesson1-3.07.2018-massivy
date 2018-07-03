@@ -156,7 +156,7 @@ start:
 				temp = a[i];
 				if (i == 1) other = temp;
 				a[i] = (other + a[i + 1]) / 2.0;
-				temp = other;
+				if (i!=1) temp = other;
 
 				cout << a[i] << " ";
 			}
