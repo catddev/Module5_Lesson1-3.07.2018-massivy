@@ -145,29 +145,24 @@ start:
 		const int n = 5;
 		double a[n] = { 1, 2, 4, 8, 10 };
 
-		int temp = 0;
-		int temp1 = 0;
+		double temp;
+		double other;
 
 		for (int i = 0; i < n; i++)
 		{
 			if (i == 0 || i == n - 1) cout << a[i] << " ";
 			else
 			{
-				if (i == 1)
-				{
-					temp = a[i];
-					a[i] = (a[i - 1] + a[i + 1]) / 2.0;
-				}
-				else
-				{
-					temp1 = (temp + a[i + 1]) / 2.0;
-					temp = a[1];
-					a[1] = temp1;
-				}
+				temp = a[i];
+				if (i == 1) other = temp;
+				a[i] = (other + a[i + 1]) / 2.0;
+				temp = other;
+
 				cout << a[i] << " ";
 			}
 		}
 		cout << endl << endl;
+
 
 		for (int i = 0; i < n; i++)
 		{
@@ -175,12 +170,40 @@ start:
 		}
 		cout << endl << endl;
 
+
+	// 2) работает, но пришлось вводить второй массив
+
+	/*	double temp[n];
+
+		for (int i = 0; i < n; i++)
+		{
+			temp[i] = a[i];
+
+			if (i == 0 || i == n - 1) cout << a[i] << " ";
+			else
+			{
+				a[i] = (temp[i - 1] + a[i + 1]) / 2.0;
+				cout << a[i] << " ";
+			}
+		}
+		cout << endl << endl;
+
+
+		for (int i = 0; i < n; i++)
+		{
+			cout << a[i] << " ";
+		}
+		cout << endl << endl;*/
+
+
+	// 3) но здесь не происходит замены элементов массива, а просто вычисление и распечатка b, так что некорректно
+
 		//double b = 0;
 		//for (int i = 0; i < n; i++)
 		//{
 		//	if (i != 0 && i != n - 1)
 		//	{
-		//		b = (a[i - 1] + a[i + 1]) / 2.0;  // но здесь не происходит замены элементов массива, а просто вычисление и распечатка b
+		//		b = (a[i - 1] + a[i + 1]) / 2.0;
 		//		cout << b << " ";
 		//	}
 		//	else cout << a[i] << " ";
