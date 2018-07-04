@@ -24,20 +24,6 @@ start:
 
 	switch (tn)
 	{
-	case 1:
-	{
-		/*int a[10];
-
-		const int n = 10;
-		int a[] = { 12, 30, 9 };
-
-		for (int i = 0; i < 10; i++)
-		{
-			cout << a[i] << endl;
-		}
-		*/
-	}
-	break;
 	case 2:
 	{
 		const int n = 5;
@@ -58,26 +44,28 @@ start:
 
 	}
 	break;
-	case 3: // проверка симметричности
+	case 4: //проверка на симметричность массива - оптимальное решениe
 	{
-
 		const int n = 6;
-		int a[n];
-		bool flag = true;
+		int a[n] = {1, 2, 3, 4, 2, 1};
+		
+		bool f = true;
 
 		for (int i = 0; i < n; i++)
-		{
-			cin >> a[i];
+			cout << a[i] << " ";
 
-			if (a[i] == a[n - i - 1]) flag = true;
-			else flag = false;
-			if (i > n / 2 + 1) break;
+		for (int i = 0; i < n / 2; i++)
+		{
+			if (a[i] != a[n - 1 - i])
+			{
+				f = false;
+				break;
+			}
 		}
-		if (flag) cout << "symmetric" << endl << endl;
+		if (f) cout << "symmetric" << endl << endl;
 		else cout << "non-symmetic" << endl << endl;
 	}
 	break;
-	
 	case 5:
 	{
 		const int n = 10;
@@ -116,7 +104,7 @@ start:
 			if (a[i] > max_v) max_v = a[i];
 			if (a[i] < min_v) min_v = a[i];
 		}
-		cout << "максимальное значение: " << max_v << endl << "минимальное значение: " << min_v << endl << endl;
+		cout << "максимальное значение/: " << max_v << endl << "минимальное значение/: " << min_v << endl << endl;
 	}
 	break;
 	case 7: // первое и последнее элементы массивов не трогать, а остальные заменить на полусумму соседей с двух сторон
@@ -203,28 +191,6 @@ start:
 				//cout << endl << endl;
 	}
 	break;
-	case 4: //проверка на симметричность массива - оптимальное решениe
-	{
-		const int x = 5;
-		
-		int a[x];
-		cin >> a[x];
-
-		bool f = true;
-
-		for (int i = 0; i < x / 2; i++)
-		{
-			if (a[i] != a[x - 1 - i])
-			{
-				f = false;
-				break;
-			}
-		}
-		if (f) cout << "symmetric" << endl << endl;
-		else cout << "non-symmetic" << endl << endl;
-	}
-	break;
-
 	default:
 		cout << "нет такой задачи" << endl << endl;
 	}
